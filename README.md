@@ -51,14 +51,14 @@
 
 - has_one :user
 - belongs_to :item
-- has_one :addresses
+- has_one :addresse
 
 ## addresses
 
 | Column          | Type         | Option                         |
 |-----------------|--------------|--------------------------------|
 | post            | string       | null: false                    |
-| prefecture_id   | integer      | null: false                    |
+| prefecture      | integer      | null: false                    |
 | municipalitie   | string       | null: false                    |
 | address         | string       | null: false                    |
 | building_name   | string       |                                |
