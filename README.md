@@ -1,70 +1,41 @@
-# README
+#  DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##  users table
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# テーブル設計
-
-## usersテーブル
-
-|            |        |          |
-| ---------- | ------ | -------- |
-| name       |        |          |
-| password   |        |          |       
-|            |        |          |
-|            |        |          |
-|            |        |          |
-|            |        |          |
+| Column   | Type   | Options     |
+|----------|--------|-------------|
+| email    | string | null: false |
+| nickname | string | null: false |
+| password | string | null: false |
+| birthday | string | null: false |
+| name     | string | null: false |
 
 ### Association
 
-- 
-- 
+- belongs_to :items
+- has_one :purchases
 
+## items table
 
-## itemsテーブル
-
-|           |            |          |
-| --------- | ---------- | -------- |
-|           |            |          |
-|           |            |          |
-|           |            |          |
-
-### Association
-
-- 
-- 
-
-## 
-
-|            |               |          |
-| ---------- | ------------- | -------- |
-|            |               |          |
-|            |               |          |
-|            |               |          |
-|            |               |          |
-|            |               |          |
+| Column     | Type   | Options     |
+|------------|--------|-------------|
+| product    | text   | null: false |
+| category   | text   | null: false |
+| price      | text   | null: false |
+| seller     | text   | null: false |
 
 ### Association
 
-- 
-- 
+- belongs_to :users
+- has_one :purchases
+
+## purchases
+
+| Column           | Type | Option            |
+|------------------|------|-------------------|
+| shipping address | text | foreign_key: true |
+
+### Association
+
+- has_one :users
+- has_one :items
