@@ -29,8 +29,8 @@
 | explanation         | integer    | null: false                    |
 | product_status      | integer    | null: false                    |
 | shipping_fee_burden | integer    | null: false                    |
-| shipping area       | integer    | null: false                    |
-| shipping days       | integer    | null: false                    |
+| shipping_area       | integer    | null: false                    |
+| shipping_days       | integer    | null: false                    |
 
 
 
