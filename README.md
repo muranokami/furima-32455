@@ -2,18 +2,21 @@
 
 ##  users table
 
-| Column   | Type   | Options     |
-|----------|--------|-------------|
-| email    | string | null: false |
-| nickname | string | null: false |
-| password | string | null: false |
-| birthday | string | null: false |
-| name     | string | null: false |
+| Column             | Type   | Options      |
+|--------------------|--------|--------------|
+| email              | string | unique: true |
+| nickname           | string | null: false  |
+| encrypted_password | string | null: false  |
+| birthday           | date   | null: false  |
+| name               | string | null: false  |
+| mysterious         | string | null: false  |
+| name(kana)         | string | null: false  |
+| mysterious(kana)   | string | null: false  |
 
 ### Association
 
-- belongs_to :items
-- has_one :purchases
+- has_many :items
+- has_many :purchases
 
 ## items table
 
@@ -27,7 +30,7 @@
 ### Association
 
 - belongs_to :users
-- has_one :purchases
+- has_many :purchases
 
 ## purchases
 
@@ -38,4 +41,4 @@
 ### Association
 
 - has_one :users
-- has_one :items
+- has_many :items
