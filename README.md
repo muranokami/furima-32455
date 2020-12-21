@@ -49,7 +49,7 @@
 
 ### Association
 
-- has_one :user
+- belongs_to :user
 - belongs_to :item
 - has_one :address
 
@@ -57,7 +57,7 @@
 
 | Column          | Type         | Option                         |
 |-----------------|--------------|--------------------------------|
-| post_id         | integer      | null: false                    |
+| post_id         | string       | null: false                    |
 | prefecture_id   | integer      | null: false                    |
 | municipalitie   | string       | null: false                    |
 | address         | string       | null: false                    |
