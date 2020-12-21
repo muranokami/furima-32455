@@ -17,29 +17,35 @@
 
 - has_many :items
 - has_many :purchases
-- has_many :addresses
 
 ## items table
 
-| Column     | Type       | Options                        |
-|------------|------------|--------------------------------|
-| name       | string     | null: false                    |
-| category   | text       | null: false                    |
-| price      | integer    | null: false                    |
-| user       | references | null: false, foreign_key: true |
+| Column              | Type       | Options                        |
+|---------------------|------------|--------------------------------|
+| name                | string     | null: false                    |
+| category_id         | integer    | null: false                    |
+| price               | integer    | null: false                    |
+| user                | references | null: false, foreign_key: true |
+| explanation         | integer    | null: false                    |
+| product_status      | integer    | null: false                    |
+| shipping_fee_burden | integer    | null: false                    |
+| shipping area       | integer    | null: false                    |
+| shipping days       | integer    | null: false                    |
+
+
+
 
 ### Association
 
-- belongs_to :users
-- has_one :purchases
-- has_one :addresses
+- belongs_to :user
+- has_one :purchase
 
 ## purchases table
 
 | Column           | Type       | Option                         |
 |------------------|------------|--------------------------------|
-| user             | string     | null: false, foreign_key: true |
-| item             | string     | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -55,12 +61,10 @@
 | prefectures     | string       | null: false                    |
 | municipalities  | string       | null: false                    |
 | address         | string       | null: false                    |
-| building name   | string       | null: false                    |
-| phone number    | string       | null: false                    |
-| purchase        | string       | null: false, foreign_key: true |
+| building_name   | string       |                                |
+| phone_number    | string       | null: false                    |
+| purchase        | references   | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :purchases
-- has_one :users
-- has_one :items
+- has_one :purchase
