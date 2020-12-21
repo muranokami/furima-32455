@@ -26,7 +26,7 @@
 | category_id            | integer    | null: false                    |
 | price                  | integer    | null: false                    |
 | user                   | references | null: false, foreign_key: true |
-| explanation            | integer    | null: false                    |
+| explanation            | text       | null: false                    |
 | product_status_id      | integer    | null: false                    |
 | shipping_fee_burden_id | integer    | null: false                    |
 | shipping_area_id       | integer    | null: false                    |
@@ -50,15 +50,15 @@
 ### Association
 
 - has_one :user
-- belongs_to :items
+- belongs_to :item
 - has_one :addresses
 
 ## addresses
 
 | Column          | Type         | Option                         |
 |-----------------|--------------|--------------------------------|
-| post_id         | string       | null: false                    |
-| prefecture_id   | string       | null: false                    |
+| post            | string       | null: false                    |
+| prefecture_id   | integer      | null: false                    |
 | municipalitie   | string       | null: false                    |
 | address         | string       | null: false                    |
 | building_name   | string       |                                |
@@ -67,4 +67,4 @@
 
 ### Association
 
-- has_one :purchase
+- belongs_to :purchase
