@@ -8,10 +8,10 @@
 | nickname           | string | null: false               |
 | encrypted_password | string | null: false               |
 | birthday           | date   | null: false               |
-| name               | string | null: false               |
-| mysterious         | string | null: false               |
-| name_kana          | string | null: false               |
-| mysterious_kana    | string | null: false               |
+| first_name         | string | null: false               |
+| last_name          | string | null: false               |
+| first_name_kana    | string | null: false               |
+| last_name_kana     | string | null: false               |
 
 ### Association
 
@@ -20,17 +20,17 @@
 
 ## items table
 
-| Column              | Type       | Options                        |
-|---------------------|------------|--------------------------------|
-| name                | string     | null: false                    |
-| category_id         | integer    | null: false                    |
-| price               | integer    | null: false                    |
-| user                | references | null: false, foreign_key: true |
-| explanation         | integer    | null: false                    |
-| product_status      | integer    | null: false                    |
-| shipping_fee_burden | integer    | null: false                    |
-| shipping_area       | integer    | null: false                    |
-| shipping_days       | integer    | null: false                    |
+| Column                 | Type       | Options                        |
+|------------------------|------------|--------------------------------|
+| name                   | string     | null: false                    |
+| category_id            | integer    | null: false                    |
+| price                  | integer    | null: false                    |
+| user                   | references | null: false, foreign_key: true |
+| explanation            | integer    | null: false                    |
+| product_status_id      | integer    | null: false                    |
+| shipping_fee_burden_id | integer    | null: false                    |
+| shipping_area_id       | integer    | null: false                    |
+| shipping_days_id       | integer    | null: false                    |
 
 
 
@@ -49,7 +49,7 @@
 
 ### Association
 
-- has_one :users
+- has_one :user
 - belongs_to :items
 - has_one :addresses
 
@@ -57,9 +57,9 @@
 
 | Column          | Type         | Option                         |
 |-----------------|--------------|--------------------------------|
-| post            | string       | null: false                    |
-| prefectures     | string       | null: false                    |
-| municipalities  | string       | null: false                    |
+| post_id         | string       | null: false                    |
+| prefecture_id   | string       | null: false                    |
+| municipalitie   | string       | null: false                    |
 | address         | string       | null: false                    |
 | building_name   | string       |                                |
 | phone_number    | string       | null: false                    |
