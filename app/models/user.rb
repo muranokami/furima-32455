@@ -6,11 +6,17 @@ class User < ApplicationRecord
   has_many :items
   has_many :purchases
 
-  validates :nickname, presence: true
-  validates :birthday, presence: true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :first_name_kana, presence: true
-  validates :last_name_kana, presence: true
+  validates :nickname
+  validates :birthday
+  with_options format: {with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/} do
+    validates :first_name
+    validates :last_name
+  end
 
+  with_options format: {with: /\A[ァ-ヶー－]+\z/} do
+    validates :first_name_kana
+    validates :last_name_kana
+  end
+ 
+   validates specifying_the_amount_range
 end
