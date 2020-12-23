@@ -6,8 +6,10 @@ class User < ApplicationRecord
   has_many :items
   has_many :purchases
 
-  validates :nickname
-  validates :birthday
+ with_options presence: true do
+    
+  validate :nickname
+  validate :birthday
   with_options format: {with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/} do
     validates :first_name
     validates :last_name
@@ -17,6 +19,6 @@ class User < ApplicationRecord
     validates :first_name_kana
     validates :last_name_kana
   end
- 
-   validates specifying_the_amount_range
+ end
+
 end
