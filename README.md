@@ -30,7 +30,7 @@
 | product_status_id      | integer    | null: false                    |
 | shipping_fee_burden_id | integer    | null: false                    |
 | shipping_area_id       | integer    | null: false                    |
-| shipping_days_id       | integer    | null: false                    |
+| shipping_day_id        | integer    | null: false                    |
 
 
 
