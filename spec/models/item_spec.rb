@@ -30,13 +30,13 @@ RSpec.describe Item, type: :model do
     end
 
     it "価格の範囲が、¥299~10,000,000¥の間であること" do
-      @item.price = 55
+      @item.price = 299
       @item.valid?
       expect(@item.errors.full_messages).to include("Price must be greater than 299")
     end
 
-    it "9,999,999を超えた際に登録できない" do
-      @item.price = 9,9999,999
+    it "10,000,000を超えた際に登録できない" do
+      @item.price = 10,000,000
       @item.valid?
       expect(@item.errors.full_messages).to include("Price can't be blank", "Price is not a number")
     end
