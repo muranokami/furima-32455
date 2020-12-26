@@ -8,14 +8,15 @@ class Item < ApplicationRecord
   belongs_to :shipping_area
   belongs_to :shipping_day
   belongs_to :shipping_fee_burden
+  has_one_attached :image
 
-
+  validates :image, presence: true
   validates :name, presence: true
   validates :price, presence: true
   validates :explanation, presence: true
-  validates :category_id, numericality: { other_than: 1 }
-  validates :product_status_id, numericality: { other_than: 1 }
-  validates :shipping_area_id, numericality: { other_than: 1 }
-  validates :shipping_day_id, numericality: { other_than: 1 }
-  validates :shipping_fee_burden_id, numericality: { other_than: 1 }
+  validates :category_id, numericality: { other_than: 1 }, presence: true
+  validates :product_status_id, numericality: { other_than: 1 }, presence: true
+  validates :shipping_area_id, numericality: { other_than: 1 }, presence: true
+  validates :shipping_day_id, numericality: { other_than: 1 }, presence: true
+  validates :shipping_fee_burden_id, numericality: { other_than: 1 }, presence: true
 end

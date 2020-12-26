@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, expect: :new
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
-    @items = Item.order("created_at DESC")
+    @items = Item.all
   end
 
   def new
@@ -13,7 +14,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render :new 
+      render :new
     end
   end
 
