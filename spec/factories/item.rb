@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :item do
     name {"花火"}
     category_id {2}
-    price {"555"}
+    price {555}
     explanation {"花火と山"}
     product_status_id {2}
     shipping_fee_burden_id {2}
