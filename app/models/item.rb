@@ -8,17 +8,18 @@ class Item < ApplicationRecord
   belongs_to :shipping_area
   belongs_to :shipping_day
   belongs_to :shipping_fee_burden
-  has_one_attached :image
 
   with_options presence: true do
     validates :image
     validates :name
     validates :price, numericality: { only_integer: true, greater_than: 300, less_than: 9999999 }
     validates :explanation
-    validates :category_id, numericality: { other_than: 1 }
-    validates :product_status_id, numericality: { other_than: 1 }
-    validates :shipping_area_id, numericality: { other_than: 1 }
-    validates :shipping_day_id, numericality: { other_than: 1 }
-    validates :shipping_fee_burden_id, numericality: { other_than: 1 }
   end
+
+  with_options numericality: { other_than: 1 }
+    validates :category_id
+    validates :product_status_id
+    validates :shipping_area_id
+    validates :shipping_day_id
+    validates :shipping_fee_burden_id
 end
