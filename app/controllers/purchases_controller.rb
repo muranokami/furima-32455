@@ -1,8 +1,9 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
   before_action :sold_out_item, only: [:index]
+  before_action :set_item, only: [:index, :create]
   def index
-    @item = Item.find(params[:item_id])
+    
     @user_purchase = UserPurchase.new
     if current_user == @item.user
       redirect_to root_path
@@ -11,7 +12,6 @@ class PurchasesController < ApplicationController
 
   def create
     @user_purchase = UserPurchase.new(set_params)
-    @item = Item.find(params[:item_id])
     if @user_purchase.valid?
       pay_item
       @user_purchase.save
@@ -39,6 +39,10 @@ class PurchasesController < ApplicationController
     def sold_out_item
       @item = Item.find(params[:item_id])
       redirect_to root_path if @item.purchase.present?
+    end
+
+    def set_item
+      @item = Item.find(params[:item_id])
     end
 
 end
