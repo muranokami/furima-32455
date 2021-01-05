@@ -11,6 +11,12 @@ RSpec.describe UserPurchase, type: :model do
         it "user_idとitem_idとpost_idとshipping_area_idとmunicipalitieとaddressとphone_numberとtokenが存在すれば登録できること" do
           expect(@purchase).to be_valid
         end
+
+        it "building_numberが空でも登録できること" do
+          @purchase.building_name = ""
+          @purchase.valid?
+        end
+        
       end
 
       context '商品が購入できない時' do
@@ -55,11 +61,6 @@ RSpec.describe UserPurchase, type: :model do
           @purchase.address = ""
           @purchase.valid?
           expect(@purchase.errors.full_messages).to include("Address can't be blank")
-        end
-
-        it "building_numberが空でも登録できること" do
-          @purchase.building_name = ""
-          @purchase.valid?
         end
 
         it "phone_numberが空では登録できないこと" do
